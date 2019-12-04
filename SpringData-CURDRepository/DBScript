@@ -1,0 +1,6 @@
+CREATE TABLE `springdata`.`employee` (
+  `eid` INT NOT NULL AUTO_INCREMENT,
+  `ename` VARCHAR(45) NOT NULL,
+  `eadd` VARCHAR(45) NOT NULL,
+  `salary` DOUBLE NOT NULL,
+  PRIMARY KEY (`eid`));
