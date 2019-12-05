@@ -15,24 +15,26 @@ import com.nt.service.EmployeeService;
 public class SpringDataCurdRepositoryApplication {
 
 	public static void main(String[] args) {
-		ApplicationContext context =null;
+		ApplicationContext context = null;
 		EmployeeService service = null;
 		System.out.println("welcome");
-		
+
 		EmployeeDTO dto = null;
-		//get IOC Container
-		context=SpringApplication.run(SpringDataCurdRepositoryApplication.class, args);
-		//get bean
-		service=context.getBean("empService", EmployeeService.class);
+		// get IOC Container
+		context = SpringApplication.run(SpringDataCurdRepositoryApplication.class, args);
+		// get bean
+		service = context.getBean("empService", EmployeeService.class);
 		try {
-			//create EmployeeDTO
-	    dto = new EmployeeDTO();
-	    dto.setName("vasu");
-	    dto.setAdress("bangalore");
-	    dto.setSalary(25000.50);
-		//invoke b.method
-		service.registerEmployee(dto);
-		}catch(DataAccessException e) {
+			// create EmployeeDTO
+
+			dto = new EmployeeDTO();
+			// dto.setId(101);
+			dto.setName("vasu");
+			dto.setAdress("bangalore");
+			dto.setSalary(25000.50);
+			// invoke b.method
+			service.registerEmployee(dto);
+		} catch (DataAccessException e) {
 			e.printStackTrace();
 		}
 	}
