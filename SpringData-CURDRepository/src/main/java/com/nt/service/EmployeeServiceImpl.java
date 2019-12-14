@@ -32,5 +32,31 @@ public class EmployeeServiceImpl implements EmployeeService {
 		else
 			return "employee is not registered";
 	}
+	@Override
+	public EmployeeDTO fetchEmployeeById(int id) {
+		EmployeeDTO dto = null;
+		Employee entity = null;
+		Optional<Employee> opt = null;
+		opt = empRepository.findById(id);
+
+		entity = opt.get();
+		// convert entity to dto
+		dto = new EmployeeDTO();
+		BeanUtils.copyProperties(entity, dto);
+		return dto;
+	}
+	@Override
+	public List<EmployeeDTO> getAllEmployees() {
+		Iterable<Employee> it;
+		List<EmployeeDTO> listdto = new ArrayList();
+		it=empRepository.findAll();
+		it.forEach(entity->{
+			  EmployeeDTO dto=new EmployeeDTO();
+			  BeanUtils.copyProperties(entity, dto);
+			  listdto.add(dto);
+		  });
+		  return listdto;
+		
+	}
 
 }
